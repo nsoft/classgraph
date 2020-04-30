@@ -68,7 +68,8 @@ public class ClassLoaderHandlerRegistry {
 
                     // Java 7/8 URLClassLoader support (should be second-to-last, so that subclasses of
                     // URLClassLoader are handled by more specific handlers above)
-                    new ClassLoaderHandlerRegistryEntry(URLClassLoaderHandler.class)));
+                    new ClassLoaderHandlerRegistryEntry(URLClassLoaderHandler.class),
+                    new ClassLoaderHandlerRegistryEntry(UnoJarClassLoaderHandler.class)));
 
     /** Fallback ClassLoaderHandler. */
     public static final ClassLoaderHandlerRegistryEntry FALLBACK_HANDLER = new ClassLoaderHandlerRegistryEntry(
@@ -87,6 +88,8 @@ public class ClassLoaderHandlerRegistry {
             "WEB-INF/lib/", "WEB-INF/lib-provided/",
             // OSGi
             "META-INF/lib/",
+            // uno-jar
+            "main/",
             // Tomcat and others
             "lib/",
             // Extension dir
@@ -105,7 +108,7 @@ public class ClassLoaderHandlerRegistry {
             // Spring-Boot
             "BOOT-INF/classes/",
             // Tomcat
-            "WEB-INF/classes/" // 
+            "WEB-INF/classes/" //
     };
 
     // -------------------------------------------------------------------------------------------------------------
